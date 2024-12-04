@@ -22,7 +22,11 @@ db.once("open", async () => {
 
     console.log("Questions seeded successfully!");
   } catch (error) {
-    console.error("Error seeding questions:", error.message);
+    if (error instanceof Error) {
+      console.error("Error seeding questions:", error.message);
+    } else {
+      console.error("Error seeding questions:", error);
+    }
     process.exit(1);
   } finally {
     process.exit(0);
