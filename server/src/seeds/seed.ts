@@ -9,7 +9,8 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const questionsPath = path.resolve(__dirname, "./pythonQuestions.json");
+// Read from the source directory
+const questionsPath = path.resolve(__dirname, "../../src/seeds/pythonQuestions.json");
 
 db.once("open", async () => {
   try {
@@ -32,5 +33,6 @@ db.once("open", async () => {
     process.exit(0);
   }
 });
+
 
 
