@@ -12,7 +12,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Serve static files from the React frontend app
-const clientDistPath = path.resolve(__dirname, '../client/dist');
+const clientDistPath = path.resolve(__dirname, '../../client/dist');
 app.use(express.static(clientDistPath));
 
 // Middleware

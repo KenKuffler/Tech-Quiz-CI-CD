@@ -13,7 +13,7 @@ router.use('/api', apiRoutes);
 
 // Serve React frontend for non-API routes
 router.use('*', (_req: Request, res: Response) => {
-  const clientDistPath = path.join(__dirname, '../../../client/dist');
+  const clientDistPath = path.join(__dirname, '../../../../client/dist');
   res.sendFile(path.join(clientDistPath, 'index.html'));
 });
 
