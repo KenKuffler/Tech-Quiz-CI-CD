@@ -11,22 +11,26 @@ const PORT = process.env.PORT || 3001;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Correct path to the client/dist directory
+const clientDistPath = path.resolve(__dirname, '../../client/dist');
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Serve static files from the React frontend app
-app.use(express.static(path.resolve(__dirname, '../client/dist')));
+app.use(express.static(clientDistPath));
 
 // API routes
 app.use('/api', routes);
 
 // Catch-all route to serve React's index.html for frontend routing
 app.get('*', (_req, res) => {
-  res.sendFile(path.resolve(__dirname, '../client/dist/index.html'));
+  res.sendFile(path.join(clientDistPath, 'index.html'));
 });
 
 // Start the server once the database connection is open
 db.once('open', () => {
   app.listen(PORT, () => console.log(`🌍 Now listening on http://localhost:${PORT}`));
 });
+
 
